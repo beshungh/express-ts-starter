@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "server.ts",
   "scripts": {
-    "dev": "ts-node-dev --files src/server.ts"
+    "dev": "ts-node-dev --files src/server.ts",
+    "build": "tsc && copy package.json dist",
+    "start": "node server.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +19,7 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.15.1",
-    "resend": "^4.5.2",
+    "resend": "^4.6.0",
     "ts-node": "^10.9.2",
     "zod": "^3.25.56"
   },

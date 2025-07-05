@@ -7,6 +7,9 @@ import cookieParser from 'cookie-parser';
 import errorHandler from './middleware/errorHandler';
 import { OK } from './constants/http';
 import authRoutes from './routes/auth.route';
+import authenticate from './middleware/authenticate';
+import userRoutes from './routes/user.route';
+import sessionRoutes from './routes/sessionRoute';
 
 const app = express();
 
@@ -30,6 +33,10 @@ app.get("/", (req, res, next) => {
 })
 
 app.use("/api/v1/auth", authRoutes)
+
+// protected routes
+app.use("/api/v1/user", authenticate, userRoutes);
+app.use("/api/v1/sessions", authenticate, sessionRoutes);
 
 // This middleware will catch any errors thrown in any of the routes above and all the error handling logic will live in the errorHandler middleware.
 app.use(errorHandler);
